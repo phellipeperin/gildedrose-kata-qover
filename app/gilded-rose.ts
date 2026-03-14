@@ -48,16 +48,11 @@ export class GildedRose {
         continue;
       }
 
-      if (item.quality > 0) {
-        item.quality = item.quality - 1
-      }
-      if (item.sellIn < 0) {
-        if (item.quality > 0) {
-          item.quality = item.quality - 1
-        }
-        if (item.quality < 50) {
-          item.quality = item.quality + 1
-        }
+      // Normal items
+      item.sellIn = item.sellIn - 1;
+      item.quality = item.quality - (item.sellIn < 0 ? 2 : 1);
+      if (item.quality < 0) {
+        item.quality = 0;
       }
     }
 
