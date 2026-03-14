@@ -1,5 +1,4 @@
-import { Item } from '@/gilded-rose';
-import { GildedRose } from '@/gilded-rose';
+import { GildedRose, Item } from '@/gilded-rose';
 import { updateItem } from '../support/gilded-rose-test-helpers';
 
 describe('Normal items', () => {
