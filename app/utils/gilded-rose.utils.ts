@@ -1,4 +1,4 @@
-import itemConfigs from '../configs/item.config';
+import itemConfigs, { normalItemRule } from '../configs/item.config';
 import type { Item } from '../gilded-rose';
 import {
   ItemQualityRule,
@@ -39,16 +39,16 @@ export const applyQualityRule = (
   return clampQuality(quality + (rule.changeBy ?? 0), bounds);
 };
 
-export const findItemRule = (item: Item): ItemRule => {
-  const matchedRule = itemConfigs.find((rule) =>
-    item.name.startsWith(rule.nameStartsWith)
+export const findItemRules = (item: Item): ItemRule[] => {
+  const matchedRules = itemConfigs.filter((rule) =>
+    item.name.includes(rule.nameIncludes)
   );
 
-  if (!matchedRule) {
-    throw new Error(`No item rule found for "${item.name}"`);
+  if (matchedRules.length === 0) {
+    return [normalItemRule];
   }
 
-  return matchedRule;
+  return matchedRules;
 };
 
 export const findQualityRule = (

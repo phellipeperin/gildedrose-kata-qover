@@ -5,14 +5,14 @@ import {
 } from './quality.config';
 
 export const sulfurasRule: ItemRule = {
-  nameStartsWith: 'Sulfuras',
+  nameIncludes: 'Sulfuras',
   skipSellInUpdate: true,
   qualityBounds: LEGENDARY_QUALITY_BOUNDS,
   qualityRules: [],
 };
 
 export const agedBrieRule: ItemRule = {
-  nameStartsWith: 'Aged Brie',
+  nameIncludes: 'Aged Brie',
   qualityBounds: DEFAULT_QUALITY_BOUNDS,
   qualityRules: [
     {
@@ -27,7 +27,7 @@ export const agedBrieRule: ItemRule = {
 };
 
 export const backstagePassesRule: ItemRule = {
-  nameStartsWith: 'Backstage passes',
+  nameIncludes: 'Backstage passes',
   qualityBounds: DEFAULT_QUALITY_BOUNDS,
   qualityRules: [
     {
@@ -52,7 +52,7 @@ export const backstagePassesRule: ItemRule = {
 };
 
 export const conjuredRule: ItemRule = {
-  nameStartsWith: 'Conjured',
+  nameIncludes: 'Conjured',
   qualityBounds: DEFAULT_QUALITY_BOUNDS,
   qualityRules: [
     {
@@ -67,7 +67,7 @@ export const conjuredRule: ItemRule = {
 };
 
 export const normalItemRule: ItemRule = {
-  nameStartsWith: '',
+  nameIncludes: '',
   qualityBounds: DEFAULT_QUALITY_BOUNDS,
   qualityRules: [
     {
@@ -83,10 +83,9 @@ export const normalItemRule: ItemRule = {
 
 const itemConfigs: ItemRule[] = [
   sulfurasRule,
-  agedBrieRule,
-  backstagePassesRule,
   conjuredRule,
-  normalItemRule,
+  backstagePassesRule,
+  agedBrieRule,
 ];
 
 export { itemConfigs };
