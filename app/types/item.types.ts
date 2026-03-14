@@ -4,7 +4,7 @@ export interface QualityBounds {
 }
 
 export interface ItemRule {
-  nameIncludes: string;
+  nameStartsWith: string;
   skipSellInUpdate?: boolean;
   qualityBounds: QualityBounds;
   qualityRules: ItemQualityUpdateRule[];

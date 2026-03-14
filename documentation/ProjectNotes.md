@@ -56,7 +56,7 @@ I didn't hard track everything, so this is an approximation. I still had toilet 
 
 4. Documentation and Code Cleanup: **20 minutes** (total time: **2 hours and 5 minutes**) <-- MVP ready
 
-5. Edge-cases: **1 hour** (total time: **3 hours and 5 minutes**) <-- Only done in the specific **feature/generic-approach** branch. There's an open PR for it.
+5. Edge-cases: **1 hour** (total time: **3 hours and 5 minutes**) <-- Only done in the specific **feature/generic-approach** branch.
 
 6. Review and Submit: **10 minutes** (total time: **3 hours and 15 minutes**)
 
@@ -76,24 +76,26 @@ Given the [requirements](./GildedRoseRequirements.md) and the code provided, the
 
 ### Item Class
 
-Unable to edit the `Item` class (as Goblins can be very dangerous!) in order to add properties such as `conjured`, `category`, etc. This means I need to rely solely on the item name in order to make all the decisions regarding the
+Unable to edit the `Item` class (as Goblins can be very dangerous!) in order to add properties such as `conjured`, `category`, etc. This means I need to rely solely on the item name in order to make all the decisions regarding item behavior.
 
 > I thought of creating a new class which would extend `Item` and add such properties, as it wouldn't really be changing the `Item` class, but this seems to go against the idea of the exercise. So I decided to not pursue it.
 
 ### Names
 
 Requirements mention items such as `"Sulfuras"`, but code has `"Sulfuras, Hand of Ragnaros"` in its implementation and tests. This makes me assume it's possible to have more than one item named `"Sulfuras"`, which should share the same properties.
-For that, we have 2 approaches:
+For that, I explored 2 approaches:
 
 1. Check if the name starts with `"Sulfuras"`
-2. Check if the name contains `"Sulfuras"`
+2. Check if the name includes `"Sulfuras"`
 
-All these rules should apply for all specific items ("Sulfuras", "Aged Brie", "Backstage passes", "Conjured"). On option 1, the rules are set and it's simpler to deal, it seems to be the intended behaviour considering the tests and code provided.
-However, on option 2, rules could mix between different sets for names like "Conjured Sulfuras, Ancient Aged Brie" and provide weird results. A solution would be to add a priority to each rule: "Sulfuras" rules take precedence over "Aged Brie" rules for example.
+All these rules should apply for all specific items (`"Sulfuras"`, `"Aged Brie"`, `"Backstage passes"`, `"Conjured"`).
 
-I will start with option 1 and improve to option 2 if time allows.
+- On `main`, I kept the simpler prefix-based approach because it is easier to reason about and stays close to the original kata expectations.
+- On `feature/generic-approach`, I explored the more flexible `includes(...)` model, which allows multiple rules to match the same item name.
+- In that generic branch, rule order acts as priority when there is a conflict. The current precedence is: `Sulfuras > Conjured > Backstage passes > Aged Brie > normal items`.
+- This means hybrid names such as `"Conjured Sulfuras, Ancient Aged Brie"` or `"Backstage passes for the Aged Brie tasting contest"` can be modeled explicitly and tested, even if that behavior goes beyond the standard kata scope.
 
 ## AI Use
 
 I expect to use AI mostly for the unit tests creation, documentation and code validation.
-I've also used to help creating some functions on the generic approach, specially with the comparasion when multiple names are handled together.
+I've also used it to help create some functions on the generic approach, especially around comparing and prioritizing multiple matching item-name rules.
