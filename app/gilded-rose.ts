@@ -1,3 +1,5 @@
+import { MIN_QUALITY, MAX_QUALITY } from './configs/quality.config';
+
 export class Item {
   name: string;
   sellIn: number;
@@ -25,11 +27,11 @@ export class GildedRose {
 
       if (item.name.startsWith('Aged Brie')) {
         item.sellIn = item.sellIn - 1;
-        if (item.quality < 50) {
+        if (item.quality < MAX_QUALITY) {
           item.quality += item.sellIn < 0 ? 2 : 1;
         }
-        if (item.quality > 50) {
-          item.quality = 50;
+        if (item.quality > MAX_QUALITY) {
+          item.quality = MAX_QUALITY;
         }
         continue;
       }
@@ -37,13 +39,13 @@ export class GildedRose {
       if (item.name.startsWith('Backstage passes')) {
         item.sellIn = item.sellIn - 1;
         if (item.sellIn < 0) {
-          item.quality = 0;
+          item.quality = MIN_QUALITY;
         } else if (item.sellIn < 5) {
-          item.quality = Math.min(item.quality + 3, 50);
+          item.quality = Math.min(item.quality + 3, MAX_QUALITY);
         } else if (item.sellIn < 10) {
-          item.quality = Math.min(item.quality + 2, 50);
+          item.quality = Math.min(item.quality + 2, MAX_QUALITY);
         } else {
-          item.quality = Math.min(item.quality + 1, 50);
+          item.quality = Math.min(item.quality + 1, MAX_QUALITY);
         }
         continue;
       }
@@ -52,8 +54,8 @@ export class GildedRose {
       item.sellIn = item.sellIn - 1;
       const degradation = item.name.startsWith('Conjured') ? 2 : 1;
       item.quality = item.quality - (item.sellIn < 0 ? degradation * 2 : degradation);
-      if (item.quality < 0) {
-        item.quality = 0;
+      if (item.quality < MIN_QUALITY) {
+        item.quality = MIN_QUALITY;
       }
     }
 
