@@ -48,11 +48,11 @@ Supporting notes for that process live in [`documentation/ProjectNotes.md`](./do
 |   |-- GildedRoseRequirements.md   # Kata rules and constraints
 |   `-- ProjectNotes.md             # Plan, assumptions, and decisions
 |-- test/
-|   |-- golden-master-text-test.ts  # Text output fixture / golden master runner
-|   |-- texttests/                  # TextTest assets kept from the kata template
+|   |-- golden-master-fixture.ts    # Golden master runner used by approval tests
 |   `-- vitest/
 |       |-- approvals.spec.ts       # Snapshot / approval-style verification
-|       `-- gilded-rose.spec.ts     # Rule-focused unit tests
+|       |-- rules/                  # Rule-focused unit tests by item category
+|       `-- support/                # Shared test helpers
 |-- package.json
 |-- tsconfig.json
 `-- vitest.config.ts
@@ -64,9 +64,8 @@ This repository is centered around:
 
 - TypeScript for the implementation
 - Vitest for automated tests and coverage
-- a text-based golden master fixture to compare legacy behavior over multiple days
-
-Some template files for Jest and older kata fixtures are still present, but the active workflow in this repo is based on Vitest.
+- a golden master fixture to compare behavior over multiple days
+Some template files from the kata starter may still be present, but the active workflow in this repo is based on Vitest.
 
 ## Getting Started
 
@@ -82,14 +81,14 @@ Run the automated test suite:
 npm run test
 ```
 
-Run the golden master text fixture:
+Run the golden master fixture:
 
 ```sh
-npx ts-node test/golden-master-text-test.ts
+npx ts-node test/golden-master-fixture.ts
 ```
 
 Run the golden master for a custom number of days:
 
 ```sh
-npx ts-node test/golden-master-text-test.ts 10
+npx ts-node test/golden-master-fixture.ts 10
 ```
