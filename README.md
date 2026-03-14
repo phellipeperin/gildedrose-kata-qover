@@ -25,7 +25,7 @@ Important constraints from the kata:
 - `quality` never exceeds `50`, except `Sulfuras`, which stays at `80`
 - the `Item` class must not be changed
 
-The original kata requirements are captured in [`documentation/GildedRoseRequirements.md`](./documenation/GildedRoseRequirements.md).
+The original kata requirements are captured in [`documentation/GildedRoseRequirements.md`](./documentation/GildedRoseRequirements.md).
 
 ## Approach
 
@@ -36,7 +36,14 @@ I am using this kata as a small but explicit engineering exercise:
 - refactor only once behavior is better protected
 - keep a written record of assumptions and decisions
 
-Supporting notes for that process live in [`documentation/ProjectNotes.md`](./documenation/ProjectNotes.md).
+Supporting notes for that process live in [`documentation/ProjectNotes.md`](./documentation/ProjectNotes.md).
+
+## Branches
+
+There are currently two relevant branches for this exercise:
+
+- `main`: the simpler and more direct implementation approach
+- `feature/generic-approach`: the more generic, config-driven implementation approach
 
 ## Project Structure
 
@@ -65,6 +72,7 @@ This repository is centered around:
 - TypeScript for the implementation
 - Vitest for automated tests and coverage
 - a golden master fixture to compare behavior over multiple days
+
 Some template files from the kata starter may still be present, but the active workflow in this repo is based on Vitest.
 
 ## Getting Started

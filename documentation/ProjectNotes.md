@@ -69,6 +69,8 @@ Some of the decisions made for the structure and problem solving of this kata.
 - Create new repo instead of forking for a cleaner commit history and evaluation of the exercise
 - Use TypeScript variant (clone only the necessary folder)
 - Use Vitest for tests (remove Mocha and Jest)
+- Keep `main` as the simpler implementation path
+- Use `feature/generic-approach` to explore the more generic, config-driven refactor separately
 
 ## Assumptions
 
