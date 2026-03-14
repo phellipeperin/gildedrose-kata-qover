@@ -1,57 +1,95 @@
-# Gilded Rose
+# Gilded Rose Kata Challenge
 
-This is the Gilded Rose kata in TypeScript.
+This repository contains my TypeScript take on the classic Gilded Rose refactoring kata, prepared as part of a Qover challenge.
 
-## Getting started
+The goal is not just to "make the tests pass", but to work through a legacy code exercise with a clear approach:
 
-Install dependencies
+- understand the existing behavior before changing it
+- protect that behavior with tests and approvals
+- refactor the update logic into something easier to reason about
+- implement the missing `Conjured` behavior without breaking the existing rules
+- document decisions, assumptions, and tradeoffs along the way
+
+## The Challenge
+
+The starting point is the standard Gilded Rose scenario: an inventory system updates item `sellIn` and `quality` values daily, with a few special item categories that behave differently.
+
+Important constraints from the kata:
+
+- normal items decrease in `quality` over time
+- `Aged Brie` increases in `quality`
+- `Backstage passes` increase as the concert approaches, then drop to `0`
+- `Sulfuras` never changes
+- `Conjured` items should degrade twice as fast as normal items
+- `quality` is never negative
+- `quality` never exceeds `50`, except `Sulfuras`, which stays at `80`
+- the `Item` class must not be changed
+
+The original kata requirements are captured in [`documentation/GildedRoseRequirements.md`](./documenation/GildedRoseRequirements.md).
+
+## Approach
+
+I am using this kata as a small but explicit engineering exercise:
+
+- preserve behavior first with approval-style coverage
+- add targeted unit tests for requirements and edge cases
+- refactor only once behavior is better protected
+- keep a written record of assumptions and decisions
+
+Supporting notes for that process live in [`documentation/ProjectNotes.md`](./documenation/ProjectNotes.md).
+
+## Project Structure
+
+```text
+.
+|-- app/
+|   `-- gilded-rose.ts              # Legacy implementation under refactor
+|-- documentation/
+|   |-- GildedRoseRequirements.md   # Kata rules and constraints
+|   `-- ProjectNotes.md             # Plan, assumptions, and decisions
+|-- test/
+|   |-- golden-master-text-test.ts  # Text output fixture / golden master runner
+|   |-- texttests/                  # TextTest assets kept from the kata template
+|   `-- vitest/
+|       |-- approvals.spec.ts       # Snapshot / approval-style verification
+|       `-- gilded-rose.spec.ts     # Rule-focused unit tests
+|-- package.json
+|-- tsconfig.json
+`-- vitest.config.ts
+```
+
+## Tooling
+
+This repository is centered around:
+
+- TypeScript for the implementation
+- Vitest for automated tests and coverage
+- a text-based golden master fixture to compare legacy behavior over multiple days
+
+Some template files for Jest and older kata fixtures are still present, but the active workflow in this repo is based on Vitest.
+
+## Getting Started
+
+Install dependencies:
 
 ```sh
 npm install
 ```
 
-## Run the unit tests from the Command-Line
-
-There are two unit test frameworks to choose from, Jest and Mocha.
+Run the automated test suite:
 
 ```sh
-npm run test:jest
+npm run test
 ```
 
-To run all tests in watch mode
-
-```sh
-npm run test:jest:watch
-```
-
-Mocha
-
-```sh
-npm run test:mocha
-```
-
-
-## Run the TextTest fixture from the Command-Line
-
-_You may need to install `ts-node`_
+Run the golden master text fixture:
 
 ```sh
 npx ts-node test/golden-master-text-test.ts
 ```
 
-Or with number of days as args:
+Run the golden master for a custom number of days:
+
 ```sh
 npx ts-node test/golden-master-text-test.ts 10
 ```
-
-You should make sure the command shown above works when you execute it in a terminal before trying to use TextTest (see below).
-
-
-## Run the TextTest approval test that comes with this project
-
-There are instructions in the [TextTest Readme](../texttests/README.md) for setting up TextTest. You will need to specify the Python executable and interpreter in [config.gr](../texttests/config.gr). Uncomment these lines:
-
-    executable:${TEXTTEST_HOME}/python/texttest_fixture.py
-    interpreter:python
-
-
