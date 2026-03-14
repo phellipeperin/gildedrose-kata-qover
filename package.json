@@ -6,7 +6,12 @@
     "precompile": "rimraf app/**/*.js test/**/*.js",
     "compile": "tsc",
     "pretest": "rimraf app/**/*.js test/**/*.js",
-    "test": "vitest --coverage"
+    "test": "vitest --coverage",
+    "test:agedbrie": "vitest test/vitest/rules/aged-brie.spec.ts --coverage",
+    "test:backstage": "vitest test/vitest/rules/backstage-passes.spec.ts --coverage",
+    "test:conjured": "vitest test/vitest/rules/conjured-items.spec.ts --coverage",
+    "test:normal": "vitest test/vitest/rules/normal-items.spec.ts --coverage",
+    "test:sulfuras": "vitest test/vitest/rules/sulfuras.spec.ts --coverage"
   },
   "license": "MIT",
   "private": true,
