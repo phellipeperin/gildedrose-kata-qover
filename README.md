@@ -50,7 +50,9 @@ There are currently two relevant branches for this exercise:
 ```text
 .
 |-- app/
-|   `-- gilded-rose.ts              # Refactored logic for Kata
+|   |-- configs/
+|   |   `-- quality.config.ts       # Shared quality bounds and constants
+|   `-- gilded-rose.ts              # Item model and GildedRose update flow
 |-- documentation/
 |   |-- GildedRoseRequirements.md   # Kata rules and constraints
 |   `-- ProjectNotes.md             # Plan, assumptions, and decisions
@@ -61,6 +63,7 @@ There are currently two relevant branches for this exercise:
 |       |-- rules/                  # Rule-focused unit tests by item category
 |       `-- support/                # Shared test helpers
 |-- package.json
+|-- package-lock.json
 |-- tsconfig.json
 `-- vitest.config.ts
 ```
