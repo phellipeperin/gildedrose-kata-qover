@@ -1,8 +1,8 @@
-import { ItemRule } from '@/types/item.types';
+import { ItemRule } from '../types/item.types';
 import {
   DEFAULT_QUALITY_BOUNDS,
   LEGENDARY_QUALITY_BOUNDS,
-} from '@/configs/quality.config';
+} from './quality.config';
 
 export const sulfurasRule: ItemRule = {
   nameStartsWith: 'Sulfuras',
@@ -86,6 +86,7 @@ const itemConfigs: ItemRule[] = [
   agedBrieRule,
   backstagePassesRule,
   conjuredRule,
+  normalItemRule,
 ];
 
 export { itemConfigs };

@@ -1,4 +1,4 @@
-import { Item, GildedRose } from '@/gilded-rose';
+import { GildedRose, Item } from '@/gilded-rose';
 
 export type ItemState = {
   name: string;

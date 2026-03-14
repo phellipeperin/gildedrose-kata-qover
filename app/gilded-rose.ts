@@ -1,4 +1,8 @@
-import { MIN_QUALITY, MAX_QUALITY } from './configs/quality.config';
+import {
+  applyQualityRule,
+  findItemRule,
+  findQualityRule,
+} from './utils/gilded-rose.utils';
 
 export class Item {
   name: string;
@@ -21,36 +25,21 @@ export class GildedRose {
 
   updateQuality() {
     for (const item of this.items) {
-      if (item.name.startsWith('Sulfuras')) {
-        continue;
+      const itemRule = findItemRule(item);
+
+      if (!itemRule.skipSellInUpdate) {
+        item.sellIn -= 1;
       }
 
-      if (item.name.startsWith('Aged Brie')) {
-        item.sellIn = item.sellIn - 1;
-        if (item.quality < MAX_QUALITY) {
-          item.quality = Math.min(item.quality + (item.sellIn < 0 ? 2 : 1), MAX_QUALITY);
-        }
-        continue;
-      }
+      const qualityRule = findQualityRule(itemRule, item.sellIn);
 
-      if (item.name.startsWith('Backstage passes')) {
-        item.sellIn = item.sellIn - 1;
-        if (item.sellIn < 0) {
-          item.quality = MIN_QUALITY;
-        } else if (item.sellIn < 5) {
-          item.quality = Math.min(item.quality + 3, MAX_QUALITY);
-        } else if (item.sellIn < 10) {
-          item.quality = Math.min(item.quality + 2, MAX_QUALITY);
-        } else {
-          item.quality = Math.min(item.quality + 1, MAX_QUALITY);
-        }
-        continue;
+      if (qualityRule) {
+        item.quality = applyQualityRule(
+          item.quality,
+          qualityRule.quality,
+          itemRule.qualityBounds
+        );
       }
-
-      // Normal and Conjured items
-      item.sellIn = item.sellIn - 1;
-      const degradation = item.name.startsWith('Conjured') ? 2 : 1;
-      item.quality = Math.max(item.quality - (item.sellIn < 0 ? degradation * 2 : degradation), MIN_QUALITY);
     }
 
     return this.items;
