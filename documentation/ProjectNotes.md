@@ -56,7 +56,7 @@ I didn't hard track everything, so this is an approximation. I still had toilet 
 
 3. Code Refactoring: 30 minutes (total time: **1 hour and 45 minutes**)
 
-4. Documentation and Code Cleanup: ??? (total time: **?? minutes**)
+4. Documentation and Code Cleanup: 20 minutes (total time: **2 hours and 5 minutes**) <-- MVP ready
 
 5. Edge-cases: ??? (total time: **?? minutes**)
 

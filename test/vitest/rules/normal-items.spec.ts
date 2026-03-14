@@ -1,7 +1,14 @@
 import { Item } from '@/gilded-rose';
+import { GildedRose } from '@/gilded-rose';
 import { updateItem } from '../support/gilded-rose-test-helpers';
 
 describe('Normal items', () => {
+  it('returns an empty array when created without items', () => {
+    const items = new GildedRose().updateQuality();
+
+    expect(items).toEqual([]);
+  });
+
   it('decrease sellIn and quality by 1 before the sell date', () => {
     const item = updateItem(new Item('+5 Dexterity Vest', 10, 20));
 

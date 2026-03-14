@@ -28,10 +28,7 @@ export class GildedRose {
       if (item.name.startsWith('Aged Brie')) {
         item.sellIn = item.sellIn - 1;
         if (item.quality < MAX_QUALITY) {
-          item.quality += item.sellIn < 0 ? 2 : 1;
-        }
-        if (item.quality > MAX_QUALITY) {
-          item.quality = MAX_QUALITY;
+          item.quality = Math.min(item.quality + (item.sellIn < 0 ? 2 : 1), MAX_QUALITY);
         }
         continue;
       }
@@ -53,10 +50,7 @@ export class GildedRose {
       // Normal and Conjured items
       item.sellIn = item.sellIn - 1;
       const degradation = item.name.startsWith('Conjured') ? 2 : 1;
-      item.quality = item.quality - (item.sellIn < 0 ? degradation * 2 : degradation);
-      if (item.quality < MIN_QUALITY) {
-        item.quality = MIN_QUALITY;
-      }
+      item.quality = Math.max(item.quality - (item.sellIn < 0 ? degradation * 2 : degradation), MIN_QUALITY);
     }
 
     return this.items;
