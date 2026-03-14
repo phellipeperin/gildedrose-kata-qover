@@ -1,15 +1,12 @@
 {
-  "name": "gilded-rose-kata",
+  "name": "gilded-rose-kata-challenge-qover",
   "version": "1.0.0",
-  "description": "Gilded Rose kata in TypeScript",
+  "description": "Gilded Rose kata Challenge for Qover",
   "scripts": {
     "precompile": "rimraf app/**/*.js test/**/*.js",
     "compile": "tsc",
     "pretest": "rimraf app/**/*.js test/**/*.js",
-    "test:jest": "jest",
-    "test:jest:watch": "jest --watchAll",
-    "test:mocha": "nyc mocha",
-    "test:vitest": "vitest --coverage"
+    "test": "vitest --coverage"
   },
   "license": "MIT",
   "private": true,
