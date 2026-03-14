@@ -44,23 +44,21 @@ In order to solve this kata, I've planned and structured it as follows:
 
 6. Review and Submit
 
-> Adding more specific steps as I advance
-
 ## Time Progress Tracker
 
 I didn't hard track everything, so this is an approximation. I still had toilet breaks and snack time :D
 
 1. Overview and Preparation: **1 hour** (total time: **1 hour**)
 
-2. Unit Tests: 15 minutes (total time: **1 hour and 15 minutes**)
+2. Unit Tests: **15 minutes** (total time: **1 hour and 15 minutes**)
 
-3. Code Refactoring: 30 minutes (total time: **1 hour and 45 minutes**)
+3. Code Refactoring: **30 minutes** (total time: **1 hour and 45 minutes**)
 
-4. Documentation and Code Cleanup: 20 minutes (total time: **2 hours and 5 minutes**) <-- MVP ready
+4. Documentation and Code Cleanup: **20 minutes** (total time: **2 hours and 5 minutes**) <-- MVP ready
 
-5. Edge-cases: ??? (total time: **?? minutes**)
+5. Edge-cases: **1 hour** (total time: **3 hours and 5 minutes**) <-- Only done in the specific **feature/generic-approach** branch. There's an open PR for it.
 
-6. Review and Submit: ??? (total time: **?? minutes**)
+6. Review and Submit: **10 minutes** (total time: **3 hours and 15 minutes**)
 
 ## Project Decisions
 
@@ -98,5 +96,4 @@ I will start with option 1 and improve to option 2 if time allows.
 ## AI Use
 
 I expect to use AI mostly for the unit tests creation, documentation and code validation.
-
-> Update as I advance in the project
+I've also used to help creating some functions on the generic approach, specially with the comparasion when multiple names are handled together.

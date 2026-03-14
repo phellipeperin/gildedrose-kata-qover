@@ -50,7 +50,7 @@ There are currently two relevant branches for this exercise:
 ```text
 .
 |-- app/
-|   `-- gilded-rose.ts              # Legacy implementation under refactor
+|   `-- gilded-rose.ts              # Refactored logic for Kata
 |-- documentation/
 |   |-- GildedRoseRequirements.md   # Kata rules and constraints
 |   `-- ProjectNotes.md             # Plan, assumptions, and decisions
