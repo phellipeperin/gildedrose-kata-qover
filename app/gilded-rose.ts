@@ -48,9 +48,10 @@ export class GildedRose {
         continue;
       }
 
-      // Normal items
+      // Normal and Conjured items
       item.sellIn = item.sellIn - 1;
-      item.quality = item.quality - (item.sellIn < 0 ? 2 : 1);
+      const degradation = item.name.startsWith('Conjured') ? 2 : 1;
+      item.quality = item.quality - (item.sellIn < 0 ? degradation * 2 : degradation);
       if (item.quality < 0) {
         item.quality = 0;
       }
