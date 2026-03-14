@@ -14,11 +14,13 @@ In order to solve this kata, I've planned and structured it as follows:
 
    1.4. Write and document plans, decisions and assumptions
 
-2. Prepare all unit tests for basic scenarios (likely a TDD approach)
+2. Prepare all unit tests for basic scenarios (TDD approach)
 
    2.1. Normal item (no specific rules)
 
    2.2. Specific 4 named items
+
+   2.3. Other items with similar names to follow requirements (given assumptions)
 
 3. Code Refactoring
 
@@ -44,9 +46,9 @@ In order to solve this kata, I've planned and structured it as follows:
 
 ## Time Progress Tracker
 
-1. Overview and Preparation: **?? minutes** (total time: **?? minutes**)
+1. Overview and Preparation: **1 hour** (total time: **1 hour**)
 
-2. Unit Tests: ??? (total time: **?? minutes**)
+2. Unit Tests: 15 minutes (total time: **1 hour and 15 minutes**)
 
 3. Code Refactoring: ??? (total time: **?? minutes**)
 
