@@ -34,34 +34,26 @@ export class GildedRose {
         continue;
       }
 
-      if (!item.name.startsWith('Backstage passes')) {
-        if (item.quality > 0) {
-          item.quality = item.quality - 1
+      if (item.name.startsWith('Backstage passes')) {
+        item.sellIn = item.sellIn - 1;
+        if (item.sellIn < 0) {
+          item.quality = 0;
+        } else if (item.sellIn < 5) {
+          item.quality = Math.min(item.quality + 3, 50);
+        } else if (item.sellIn < 10) {
+          item.quality = Math.min(item.quality + 2, 50);
+        } else {
+          item.quality = Math.min(item.quality + 1, 50);
         }
-      } else {
-        if (item.quality < 50) {
-          item.quality = item.quality + 1
-          if (item.name.startsWith('Backstage passes')) {
-            if (item.sellIn < 11) {
-              if (item.quality < 50) {
-                item.quality = item.quality + 1
-              }
-            }
-            if (item.sellIn < 6) {
-              if (item.quality < 50) {
-                item.quality = item.quality + 1
-              }
-            }
-          }
-        }
+        continue;
+      }
+
+      if (item.quality > 0) {
+        item.quality = item.quality - 1
       }
       if (item.sellIn < 0) {
-        if (!item.name.startsWith('Backstage passes')) {
-          if (item.quality > 0) {
-            item.quality = item.quality - 1
-          }
-        } else {
-          item.quality = item.quality - item.quality
+        if (item.quality > 0) {
+          item.quality = item.quality - 1
         }
         if (item.quality < 50) {
           item.quality = item.quality + 1
