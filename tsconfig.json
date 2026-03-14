@@ -5,9 +5,15 @@
     "strict": true,
     "noImplicitAny": false,
     "sourceMap": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
     "baseUrl": "./",
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "types": [
+      "node",
+      "vitest/globals"
+    ],
     "paths": {
       "@/*": [
         "app/*"
@@ -15,6 +21,7 @@
     }
   },
   "exclude": [
+    "dist",
     "node_modules"
   ]
 }

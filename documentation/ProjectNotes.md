@@ -28,9 +28,7 @@ In order to solve this kata, I've planned and structured it as follows:
 
    3.2. Each of the 4 specific named items (and fix Conjured logic)
 
-   3.3. Define a more generic approach and create types to support it
-
-   3.4. Code clean-up
+   3.3. Code clean-up
 
 4. Documentation
 
@@ -40,19 +38,25 @@ In order to solve this kata, I've planned and structured it as follows:
 
 5. Tackle edge-cases
 
+    5.1. Define a more generic approach and create types to support it
+
+    5.2. Deal with items with multiple naming rules
+
 6. Review and Submit
 
 > Adding more specific steps as I advance
 
 ## Time Progress Tracker
 
+I didn't hard track everything, so this is an approximation. I still had toilet breaks and snack time :D
+
 1. Overview and Preparation: **1 hour** (total time: **1 hour**)
 
 2. Unit Tests: 15 minutes (total time: **1 hour and 15 minutes**)
 
-3. Code Refactoring: ??? (total time: **?? minutes**)
+3. Code Refactoring: 30 minutes (total time: **1 hour and 45 minutes**)
 
-4. Documentation: ??? (total time: **?? minutes**)
+4. Documentation and Code Cleanup: ??? (total time: **?? minutes**)
 
 5. Edge-cases: ??? (total time: **?? minutes**)
 
